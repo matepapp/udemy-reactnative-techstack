@@ -11,6 +11,16 @@ import { CardSection } from './common';
 import * as actions from '../actions';
 
 class ListItem extends Component {
+  renderDescription() {
+    const { library, selectedLibraryID } = this.props;
+
+    if (library.id === selectedLibraryID) {
+      return (
+        <Text>{library.description}</Text>
+      );
+    }
+  }
+
   render() {
     const { titleStyle } = styles;
     const { id, title } = this.props.library;
@@ -25,6 +35,7 @@ class ListItem extends Component {
               {title}
             </Text>
           </CardSection>
+          {this.renderDescription()}
         </View>
       </TouchableWithoutFeedback>
     );
@@ -38,4 +49,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(null, actions)(ListItem);
+const mapStateToProps = state => {
+  return { selectedLibraryID: state.selectedLibraryID };
+}
+
+export default connect(mapStateToProps, actions)(ListItem);
