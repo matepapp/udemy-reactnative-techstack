@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { CardSection } from './common'
+import { Text, StyleSheet } from 'react-native';
+import { CardSection } from './common';
 
 class ListItem extends Component {
   render() {
